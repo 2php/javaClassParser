@@ -1,9 +1,11 @@
 #include "javaclp.h"
 #include <cstdlib>
+#include <stdio.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <sys/mman.h>
+#include <endian.h>
 
 #define MEMSIZE 100000000
 
@@ -27,5 +29,9 @@ int main(int argc, char** argv)
 
     madvise(mem, finfo.st_size, MADV_SEQUENTIAL);
 
-    void *ptr = mem;    
+    void *ptr = mem;
+
+    printf("standard:\t%x\n", *(int *)ptr); 
+    printf("htobe32:\t%x\n", htobe32(*(int *)ptr));
+    printf("be32toh:\t%x\n", be32toh(*(int *)ptr));
 }
