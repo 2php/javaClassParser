@@ -1,4 +1,4 @@
-#include "cpooltags.h"
+#include "tags.h"
 
 #include <stdlib.h>
 #include <unistd.h>
@@ -37,6 +37,7 @@ size_t rvread(byte *ptr, size_t size, byte *mem)
     return i;
 }
 
+// Wrapper for rvread such that mem pointer is moved with read
 static inline void leread(void *u, size_t s, byte **m) { *m += rvread((byte*)u, s, *m); }
 
-
+extern size_t beread(byte *ptr, size_t size, byte *mem);
