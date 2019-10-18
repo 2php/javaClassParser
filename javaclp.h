@@ -40,4 +40,4 @@ size_t rvread(byte *ptr, size_t size, byte *mem)
 // Wrapper for rvread such that mem pointer is moved with read
 static inline void leread(void *u, size_t s, byte **m) { *m += rvread((byte*)u, s, *m); }
 
-extern size_t beread(byte *ptr, size_t size, byte *mem);
+extern size_t eiberead(byte *ptr, size_t size, byte *mem);
